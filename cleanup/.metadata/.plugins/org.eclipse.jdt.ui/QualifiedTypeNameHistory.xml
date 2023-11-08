@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.configuration.EnableWebSecurity"/>
+    <fullyQualifiedTypeName name="org.apache.tomcat.util.net.openssl.ciphers.Authentication"/>
+    <fullyQualifiedTypeName name="javax.security.sasl.AuthenticationException"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.AuthenticationException"/>
+    <fullyQualifiedTypeName name="com.cleanup.login.LoginFail"/>
+    <fullyQualifiedTypeName name="com.cleanup.login.LoginSuccess"/>
+    <fullyQualifiedTypeName name="com.cleanup.login.LoginDetailService"/>
+    <fullyQualifiedTypeName name="com.cleanup.store.StoreDetail"/>
+    <fullyQualifiedTypeName name="org.apache.catalina.Store"/>
+    <fullyQualifiedTypeName name="com.cleanup.dto.Store"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.User"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.security.SecurityProperties.User"/>
+    <fullyQualifiedTypeName name="com.cleanup.dto.User"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.Authentication"/>
+    <fullyQualifiedTypeName name="org.springframework.security.web.bind.annotation.AuthenticationPrincipal"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.annotation.AuthenticationPrincipal"/>
+    <fullyQualifiedTypeName name="com.cleanup.dto.OrderList"/>
+    <fullyQualifiedTypeName name="org.mybatis.spring.annotation.MapperScan"/>
+    <fullyQualifiedTypeName name="java.text.ParseException"/>
+    <fullyQualifiedTypeName name="ch.qos.logback.classic.Logger"/>
+    <fullyQualifiedTypeName name="java.util.logging.LogManager"/>
+</qualifiedTypeNameHistroy>

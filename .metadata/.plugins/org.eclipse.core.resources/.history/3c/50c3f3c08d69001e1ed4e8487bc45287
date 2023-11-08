@@ -1,0 +1,69 @@
+package com.study.springboot.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
+
+import com.study.springboot.dao.ITransaction1Dao;
+import com.study.springboot.dao.ITransaction2Dao;
+
+@Service
+public class BuyTicketService implements IBuyTicketService {
+
+	// JDBC 연동을 위한 자동주입
+	@Autowired
+	ITransaction1Dao transaction1;
+	@Autowired
+	ITransaction2Dao transaction2;
+
+//	// 트랙잭션 처리를 위한 자동주입
+//	@Autowired	// 스프링 안에 기본적으로 제공하는 것
+//	PlatformTransactionManager transactionManager;
+//	@Autowired
+//	TransactionDefinition definition;
+//	// definition : 기본 설정 값을 사용하겠다는 것 
+	@Autowired
+	TransactionTemplate transactionTemplate;
+	
+	@Override
+	public int buy(String consumerId, int amount, String error) {
+		
+//		TransactionStatus status = transactionManager.getTransaction(definition);
+		/*
+		  	상황 : 현장에서는 표가 발행되었는데 전산에 등록이 안될때...
+		*/
+		try {
+			transactionTemplate.execute(new TransactionCallback() {
+				protected void doInTransactionWithoutResult(TransactionStatus arg0) {
+				
+				transaction1.pay(consumerId, amount); // 현장 판매처 상항
+			
+			// 의도적 에러 발생
+			if (error.equals("1")) {int n = 10 / 0;} 
+				
+			transaction2.pay(consumerId, amount);
+			/*
+			 	에러1이 들어오면 이 테이블에는 저장이 안된다.
+			 	이런 일이 생기면 안되므로 트랙젝션이 필요함.
+			 	transaction1부터 저장이 안되고 롤백을 해야함.
+			*/
+			}
+
+				@Override
+				public Object doInTransaction(TransactionStatus status) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+		});
+			return 1;
+		} catch(Exception e) {
+			System.out.println("[PlatformTransactionManager] Rollback");
+//			transactionManager.rollback(status);
+			return 0;
+		}
+	}
+}
